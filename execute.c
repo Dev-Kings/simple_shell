@@ -1,6 +1,12 @@
 #include "main.h"
 
-void _execute (const char *str)
+/**
+ * _execute - executes function.
+ * @str: pointer to const string
+ *
+ * Return: Nothing.
+ */
+void _execute(const char *str)
 {
 	/* declare child process */
 	pid_t child;
@@ -12,7 +18,7 @@ void _execute (const char *str)
 	if (child == -1)
 	{
 		perror("Fork failure!\n");
-		exit (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 	/* IN THE CHILD PROCESS */
 	if (child == 0)
