@@ -1,6 +1,11 @@
 #include "main.h"
 
-int main (void)
+/**
+ * main - initialize shell.
+ *
+ * Return: Always 0.
+ */
+int main(void)
 {
 	char str[200];
 
@@ -10,5 +15,5 @@ int main (void)
 		read_input(str, sizeof(str));
 		_execute(str);
 	}
-	return 0;
+	return (0);
 }
