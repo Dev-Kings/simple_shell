@@ -3,15 +3,15 @@
 /**
  * _execute - executes function.
  * @str: pointer to const string
+ * @filename: initial executable filename
  *
  * Return: Nothing.
  */
-void _execute(const char *str)
+void _execute(const char *str, char *filename)
 {
-	/* declare child process */
 	pid_t child;
+	char *args[2];
 
-	/* create child process */
 	child = fork();
 
 	/* if fork fails */
@@ -23,9 +23,13 @@ void _execute(const char *str)
 	/* IN THE CHILD PROCESS */
 	if (child == 0)
 	{
-		execlp(str, str, (char *)NULL);
-		perror("execlp failure\n");
-		exit(EXIT_FAILURE);
+		args[0] = (char *)str;
+		args[1] = NULL;
+		if (execve(args[0], args, NULL) == -1)
+		{
+			perror(filename);
+			exit(EXIT_FAILURE);
+		}
 	}
 	/* in parent process */
 	else
